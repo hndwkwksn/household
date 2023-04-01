@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー登録</title>
+    <link th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link th:href="@{/css/common.css}" rel="styleSheet">
+</head>
+
+<body>
+<header class="shadow-sm mb-3">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #CCFFCC;">
+        <div class="container">
+
+            <a class="navbar-brand p-3" href="/kakeibo">家計簿アプリ</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kakeibo/login">ログイン</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kakeibo/user/sign_up">新規登録</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-5 mx-2 mx-auto text-center shadow-lg rounded px-0 my-5">
+
+            <h5 class="bg-light py-4 mb-0">新規登録</h5>
+
+            <div class="form-body px-4 pb-4">
+                <form method="post" action="/kakeibo/user/add" th:object="${formModel}">
+
+                    <div class="mx-auto mb-2 text-center">
+                        <div class="error-message" th:each="errorMessage : ${errorMessages}">
+                            <p th:text="${errorMessage}"></p>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa-sharp fa-solid fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input class="form-control" type="text"  name="email" th:value="*{email}" placeholder="メールアドレス" style="height: 29.33px;" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa-sharp fa-solid fa-lock"></i>
+                            </span>
+                        </div>
+                        <input class="form-control" type="text"  name="password" th:value="*{password}" placeholder="パスワード" style="height: 29.33px;" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa-sharp fa-solid fa-lock"></i>
+                            </span>
+                        </div>
+                        <input  class="form-control" type="text"  name="confirmPassword" th:value="*{confirmPassword}" placeholder="パスワード(確認用)" style="height: 29.33px;" />
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <input type="submit" value="新規登録" class="btn btn-success text-light mt-5" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
