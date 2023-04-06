@@ -10,7 +10,7 @@ public class LoginController {
     /*
     * ログイン画面表示
     */
-    @GetMapping
+    @GetMapping("/login")
     public ModelAndView login(ModelAndView mav) {
 
         mav.setViewName("/login");
