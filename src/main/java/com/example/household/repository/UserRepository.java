@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+    // ユーザー情報を1件だけ取得
     User findByEmailAndPassword(String email, String encPassword);
+
+    // 登録されている全てのメールアドレスを取得
     User findByEmail(String email);
 }
