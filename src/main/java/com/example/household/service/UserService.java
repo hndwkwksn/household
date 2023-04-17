@@ -20,10 +20,11 @@ public class UserService {
 
         // パスワードを暗号化
         String encPassword = CipherUtil.encrypt(reqUser.getPassword());
+        String password = reqUser.getPassword();
 
         String email = reqUser.getEmail();
 
-        User user = userRepository.findByEmailAndPassword(email, encPassword);
+        User user = userRepository.findByEmailAndPassword(email, password);
 
         return user;
     }
