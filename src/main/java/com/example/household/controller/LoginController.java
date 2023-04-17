@@ -42,6 +42,6 @@ public class LoginController {
 
         session.setAttribute("loginUser", user);
 
-        return new ModelAndView("/");
+        return new ModelAndView("redirect:/");
     }
 }
